@@ -11,6 +11,10 @@ public class Solution {
             if (num == 0)
                 zeroCount++;
         }
+        if (zeroCount <= 0)
+            return;
+        if (zeroCount == nums.length)
+            return;
         while (!sorted) {
             System.out.println(Arrays.toString(nums));
             if (nums[currentIndex] == 0)
@@ -21,7 +25,7 @@ public class Solution {
                 zeroIndex = -1;
             }
 
-            for (int i = nums.length - zeroCount - 1; i < nums.length; i++) {
+            for (int i = nums.length - zeroCount; i < nums.length; i++) {
                 if (nums[i] != 0) {
                     sorted = false;
                     break;
