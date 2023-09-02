@@ -14,16 +14,24 @@ public class Solution {
         if (zeroCount == nums.length)
             return;
         while (zeroIndex >= nums.length - zeroCount) {
-            if (nums[zeroIndex] == 0) {
-                zeroIndex--;
-                currentIndex = zeroIndex - 1;
+            if (zeroIndex - 1 > 0) {
+                if (nums[zeroIndex] == 0) {
+                    zeroIndex--;
+                    currentIndex = zeroIndex - 1;
+                }
+                if (nums[currentIndex] == 0 && nums[zeroIndex] != 0) {
+                    for (int i = currentIndex; i < zeroIndex; i++) {
+                        nums[i] = nums[i + 1];
+                        nums[i + 1] = 0;
+                    }
+                    zeroIndex--;
+                    currentIndex = zeroIndex - 1;
+                }
+            } else {
+                break;
             }
-            if (nums[currentIndex] == 0 && nums[zeroIndex] != 0) {
-                nums[currentIndex] = nums[zeroIndex];
-                nums[zeroIndex] = 0;
-                zeroIndex--;
-                currentIndex = zeroIndex - 1;
-            }
+                
+           
             currentIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : zeroIndex - 1;
             
         }
